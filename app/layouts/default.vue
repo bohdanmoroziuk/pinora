@@ -5,7 +5,7 @@
     <main class="flex-1 mr-4">
       <AppHeader />
 
-      <AppGallery />
+      <slot />
     </main>
   </div>
 </template>

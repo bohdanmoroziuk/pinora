@@ -13,6 +13,12 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
 
+  routeRules: {
+    '/': {
+      redirect: '/pins',
+    },
+  },
+
   compatibilityDate: '2025-07-15',
 
   typescript: {
