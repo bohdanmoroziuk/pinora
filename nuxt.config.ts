@@ -13,6 +13,12 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
 
+  runtimeConfig: {
+    public: {
+      imagekitUrlEndpoint: '',
+    },
+  },
+
   routeRules: {
     '/': {
       redirect: '/pins',
@@ -20,6 +26,14 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-07-15',
+
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@imagekit/vue',
+      ],
+    },
+  },
 
   typescript: {
     typeCheck: true,
