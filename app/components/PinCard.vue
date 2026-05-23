@@ -1,24 +1,19 @@
 <script setup lang="ts">
 const props = defineProps<{
-  item: {
-    id: number
-    media: string
-    width: number
-    height: number
-  }
+  pin: Pin
 }>()
 
-const imageWidth = 375
-const imageHeight = (imageWidth * props.item.height) / props.item.width
+const pinWidth = 375
+const pinHeight = (pinWidth * props.pin.height) / props.pin.width
 
 const rootStyle = computed(() => {
   return {
-    gridRowEnd: `span ${Math.ceil(props.item.height / 100)}`,
+    gridRowEnd: `span ${Math.ceil(props.pin.height / 100)}`,
   }
 })
 
 const goToPinPage = () => {
-  navigateTo(`/pins/${props.item.id}`)
+  navigateTo(`/pins/${props.pin.id}`)
 }
 </script>
 
@@ -27,10 +22,10 @@ const goToPinPage = () => {
     class="flex cursor-pointer relative group"
     :style="rootStyle"
   >
-    <IKImage
-      :src="item.media"
-      :width="imageWidth"
-      :height="imageHeight"
+    <PinImage
+      :src="pin.media"
+      :width="pinWidth"
+      :height="pinHeight"
       class="w-full rounded-2xl object-cover"
       alt=""
     />
