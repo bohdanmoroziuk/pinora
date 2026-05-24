@@ -14,7 +14,6 @@
       variant="link"
     />
 
-    <!-- overflow-hidden -->
     <div class="flex flex-col md:flex-row w-full xl:w-[70%] md:max-h-[80vh] mr-4 xl:mr-0 border border-[#e9e9e9] rounded-4xl overflow-hidden">
       <div class="flex-1 bg-[#c0a68c]">
         <PinImage
@@ -25,7 +24,6 @@
         />
       </div>
 
-      <!-- overflow-hidden -->
       <div class="flex flex-col flex-1 gap-8 p-4 overflow-hidden">
         <PinInteractions />
 
