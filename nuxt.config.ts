@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: [
         '@imagekit/vue',
+        'vue3-emoji-picker',
       ],
     },
   },
