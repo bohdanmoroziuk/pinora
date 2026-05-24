@@ -35,6 +35,7 @@ const goToPinPage = () => {
       @click="goToPinPage"
     >
       <UButton
+        class="rounded-3xl"
         size="md"
         color="error"
         variant="solid"
