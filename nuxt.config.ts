@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   extends: [
     './layers/core',
+    './layers/ui',
   ],
 
   modules: [
