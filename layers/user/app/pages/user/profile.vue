@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import UserProfileTabs from '~/components/UserProfileTabs.vue'
-
 const pins: Pin[] = [
   {
     id: 1,

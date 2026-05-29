@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     './layers/ui',
     './layers/pin',
     './layers/auth',
+    './layers/user',
   ],
 
   modules: [
