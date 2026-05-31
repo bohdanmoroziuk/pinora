@@ -4,8 +4,8 @@ export default defineNuxtConfig({
     './layers/core',
     './layers/ui',
     './layers/pin',
-    './layers/auth',
     './layers/user',
+    './layers/auth',
   ],
 
   modules: [
