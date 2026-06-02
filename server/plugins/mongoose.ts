@@ -1,5 +1,7 @@
 export default defineNitroPlugin(async () => {
-  await connectMongoose()
+  const config = useRuntimeConfig()
+
+  await connectMongoose(config.mongodbUri)
 
   const shutdown = async () => {
     await disconnectMongoose()

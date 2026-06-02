@@ -11,13 +11,15 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "db:seed": "npx tsx scripts/seed.ts"
   },
   "dependencies": {
     "@imagekit/vue": "^4.0.1",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/ui": "^4.7.1",
     "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
     "eslint": "^10.3.0",
     "mongoose": "^9.6.3",
     "nuxt": "^4.4.5",

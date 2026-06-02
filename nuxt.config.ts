@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
-    mongodbUri: '',
+    mongodbUri: process.env.MONGODB_URI || '',
     public: {
       imagekitUrlEndpoint: '',
     },
