@@ -1,24 +1,24 @@
 <script setup lang="ts">
-const pins: Pin[] = [
+const pins = [
   {
-    id: 1,
+    id: '1',
     media: '/pins/pin1.jpeg',
     width: 1260,
     height: 1000,
   },
   {
-    id: 2,
+    id: '2',
     media: '/pins/pin2.jpeg',
     width: 1260,
     height: 1400,
   },
   {
-    id: 3,
+    id: '3',
     media: '/pins/pin3.jpeg',
     width: 1260,
     height: 1400,
   },
-]
+] as Pin[]
 </script>
 
 <template>

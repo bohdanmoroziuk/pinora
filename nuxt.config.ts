@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
+    '@pinia/nuxt',
   ],
 
   devtools: {
@@ -20,6 +21,11 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css',
   ],
+
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+  },
 
   runtimeConfig: {
     mongodbUri: process.env.MONGODB_URI || '',
