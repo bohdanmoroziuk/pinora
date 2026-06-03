@@ -44,7 +44,7 @@ invariant(pin.value != null, 404, 'Pin not found')
 
         <ULink
           class="flex items-center gap-2"
-          to="/user/profile"
+          :to="`/users/${pin.user.username}`"
         >
           <UserAvatar
             class="w-8 h-8"

@@ -14,3 +14,11 @@ export const createUser = (input: CreateUserInput) => {
 export const findUserByEmail = (email: string) => {
   return UserModel.findOne().where('email').equals(email).exec()
 }
+
+export const findUserByUsername = (username: string) => {
+  return UserModel
+    .findOne()
+    .where('username')
+    .equals(username)
+    .exec()
+}

@@ -1,4 +1,19 @@
 <script setup lang="ts">
+import { useUsersStore } from '#layers/user/app/stores/users.store'
+
+const route = useRoute()
+const username = route.params.username
+
+invariant(typeof username === 'string', 400, 'Username not provided')
+
+const usersStore = useUsersStore()
+const { user } = storeToRefs(usersStore)
+const { loadUserByUsername } = usersStore
+
+await loadUserByUsername(username)
+
+invariant(user != null, 404, 'User not found')
+
 const pins = [
   {
     id: '1',
@@ -22,15 +37,22 @@ const pins = [
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-4">
-    <UserAvatar class="w-25 h-25" />
+  <div
+    v-if="user"
+    class="flex flex-col items-center gap-4"
+  >
+    <UserAvatar
+      class="w-25 h-25"
+      :src="user.avatar"
+      :alt="user.fullName"
+    />
 
     <h1 class="text-4xl font-medium">
-      John Doe
+      {{ user.fullName }}
     </h1>
 
     <p class="text-muted font-light">
-      @johndoe
+      @{{ user.username }}
     </p>
 
     <p class="font-medium">
