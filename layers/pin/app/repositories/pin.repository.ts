@@ -3,5 +3,5 @@ export const getPins = () => {
 }
 
 export const getPinById = (id: string) => {
-  return $fetch<Pin>(`/api/pins/${id}`)
+  return $fetch<PinDetails>(`/api/pins/${id}`)
 }

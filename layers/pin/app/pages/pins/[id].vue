@@ -53,7 +53,7 @@ invariant(pin.value != null, 404, 'Pin not found')
           />
 
           <span class="text-sm">
-            John Doe
+            {{ pin.user.fullName }}
           </span>
         </ULink>
 

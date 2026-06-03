@@ -7,3 +7,12 @@ export const getPins = () => {
 export const getPinById = (id: string) => {
   return PinModel.findOne().where('_id').equals(id).exec()
 }
+
+export const getPinDetailsById = (id: string) => {
+  return PinModel
+    .findOne()
+    .where('_id')
+    .equals(id)
+    .populate('user', 'id fullName username avatar')
+    .exec()
+}

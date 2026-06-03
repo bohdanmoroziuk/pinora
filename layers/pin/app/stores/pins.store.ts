@@ -2,7 +2,7 @@ import { getPins, getPinById } from '#layers/pin/app/repositories/pin.repository
 
 export const usePinsStore = defineStore('pins', () => {
   const pins = ref<Pin[]>([])
-  const pin = ref<Pin | null>(null)
+  const pin = ref<PinDetails | null>(null)
 
   const loadPins = async () => {
     pins.value = await getPins()

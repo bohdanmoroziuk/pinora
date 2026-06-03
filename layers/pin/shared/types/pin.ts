@@ -12,3 +12,7 @@ export type Pin = {
   createdAt: string
   updatedAt: string
 }
+
+export type PinDetails = Omit<Pin, 'user'> & { user: PinAuthor }
+
+export type PinAuthor = Pick<User, 'id' | 'fullName' | 'username' | 'avatar'>
