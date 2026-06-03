@@ -21,11 +21,7 @@ const items = ref<DropdownMenuItem[]>([
     v-if="isLoggedIn"
     class="hidden sm:flex items-center gap-4"
   >
-    <img
-      class="w-9 h-9 rounded-full object-cover"
-      src="/icons/no-avatar.png"
-      alt=""
-    >
+    <UserAvatar class="w-9 h-9" />
 
     <UDropdownMenu
       :items="items"

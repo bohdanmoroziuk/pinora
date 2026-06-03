@@ -1,10 +1,6 @@
 <template>
   <div class="flex gap-4">
-    <img
-      class="w-8 h-8 rounded-full object-cover"
-      src="/icons/no-avatar.png"
-      alt="User avatar"
-    >
+    <UserAvatar class="w-8 h-8" />
 
     <div class="flex flex-col gap-1">
       <p class="text-[14px] font-bold">

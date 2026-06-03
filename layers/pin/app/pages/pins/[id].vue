@@ -46,11 +46,11 @@ invariant(pin.value != null, 404, 'Pin not found')
           class="flex items-center gap-2"
           to="/user/profile"
         >
-          <img
-            class="w-8 h-8 rounded-full"
-            src="/icons/no-avatar.png"
-            alt="User avatar"
-          >
+          <UserAvatar
+            class="w-8 h-8"
+            :src="pin.user.avatar"
+            :alt="pin.user.fullName"
+          />
 
           <span class="text-sm">
             John Doe

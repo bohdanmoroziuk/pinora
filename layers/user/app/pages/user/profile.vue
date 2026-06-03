@@ -23,11 +23,7 @@ const pins = [
 
 <template>
   <div class="flex flex-col items-center gap-4">
-    <img
-      class="w-25 h-25 rounded-full object-cover"
-      src="/icons/no-avatar.png"
-      alt=""
-    >
+    <UserAvatar class="w-25 h-25" />
 
     <h1 class="text-4xl font-medium">
       John Doe
