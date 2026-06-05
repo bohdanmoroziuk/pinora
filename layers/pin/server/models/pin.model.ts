@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
+import type { PinEntity } from '#layers/pin/server/types/pin'
 
 const { Schema, model, models } = mongoose
 
-const pinSchema = new Schema({
+const pinSchema = new Schema<PinEntity>({
   media: {
     type: String,
     required: true,
@@ -63,4 +64,4 @@ const pinSchema = new Schema({
   },
 })
 
-export const PinModel = models.Pin || model('Pin', pinSchema)
+export const PinModel = models.Pin || model<PinEntity>('Pin', pinSchema)

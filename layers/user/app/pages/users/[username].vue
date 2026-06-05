@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useUsersStore } from '#layers/user/app/stores/users.store'
+import { usePinsStore } from '#layers/pin/app/stores/pins.store'
 
 const route = useRoute()
 const username = route.params.username
@@ -12,28 +13,13 @@ const { loadUserByUsername } = usersStore
 
 await loadUserByUsername(username)
 
-invariant(user != null, 404, 'User not found')
+invariant(user, 404, 'User not found')
 
-const pins = [
-  {
-    id: '1',
-    media: '/pins/pin1.jpeg',
-    width: 1260,
-    height: 1000,
-  },
-  {
-    id: '2',
-    media: '/pins/pin2.jpeg',
-    width: 1260,
-    height: 1400,
-  },
-  {
-    id: '3',
-    media: '/pins/pin3.jpeg',
-    width: 1260,
-    height: 1400,
-  },
-] as Pin[]
+const pinsStore = usePinsStore()
+const { userPins } = storeToRefs(pinsStore)
+const { loadUserPins } = pinsStore
+
+await loadUserPins(user.value!.id)
 </script>
 
 <template>
@@ -97,7 +83,7 @@ const pins = [
 
     <UserProfileTabs>
       <template #created>
-        <PinGrid :pins />
+        <PinGrid :pins="userPins" />
       </template>
 
       <template #saved>

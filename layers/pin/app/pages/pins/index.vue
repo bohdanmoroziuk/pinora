@@ -2,12 +2,12 @@
 import { usePinsStore } from '#layers/pin/app/stores/pins.store'
 
 const pinsStore = usePinsStore()
-const { pins } = storeToRefs(pinsStore)
-const { loadPins } = pinsStore
+const { feedPins } = storeToRefs(pinsStore)
+const { loadFeedPins } = pinsStore
 
-await callOnce('pins', loadPins)
+await callOnce('feed-pins', loadFeedPins)
 </script>
 
 <template>
-  <PinGrid :pins />
+  <PinGrid :pins="feedPins" />
 </template>
