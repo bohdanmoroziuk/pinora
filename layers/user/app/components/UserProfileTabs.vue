@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { TabsItem } from '@nuxt/ui'
 
+const { username } = defineProps<{
+  username: string
+}>()
+
 const route = useRoute()
 const router = useRouter()
 
@@ -23,7 +27,7 @@ const active = computed({
   },
   set(tab) {
     router.push({
-      path: '/user/profile',
+      path: `/users/${username}`,
       query: { tab },
       hash: '#tabs',
     })

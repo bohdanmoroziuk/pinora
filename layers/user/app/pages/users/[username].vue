@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useUsersStore } from '#layers/user/app/stores/users.store'
 import { usePinsStore } from '#layers/pin/app/stores/pins.store'
+import { useUsersStore } from '#layers/user/app/stores/users.store'
+import { useBoardsStore } from '#layers/board/app/stores/boards.store'
 
 const route = useRoute()
 const username = route.params.username
@@ -20,6 +21,12 @@ const { userPins } = storeToRefs(pinsStore)
 const { loadUserPins } = pinsStore
 
 await loadUserPins(user.value!.id)
+
+const boardsStore = useBoardsStore()
+const { userBoards } = storeToRefs(boardsStore)
+const { loadUserBoards } = boardsStore
+
+await loadUserBoards(user.value!.id)
 </script>
 
 <template>
@@ -81,13 +88,13 @@ await loadUserPins(user.value!.id)
       />
     </div>
 
-    <UserProfileTabs>
+    <UserProfileTabs :username>
       <template #created>
         <PinGrid :pins="userPins" />
       </template>
 
       <template #saved>
-        <PinCollectionGrid />
+        <BoardGrid :boards="userBoards" />
       </template>
     </UserProfileTabs>
   </div>

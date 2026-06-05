@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import { connectMongoose } from '../server/utils/mongoose'
 import { PinModel } from '../layers/pin/server/models/pin.model'
 import { UserModel } from '../layers/user/server/models/user.model'
-import { BoardModel } from '../layers/pin/server/models/board.model'
+import { BoardModel } from '../layers/board/server/models/board.model'
 import { CommentModel } from '../layers/pin/server/models/comment.model'
 
 const mongodbUri = process.env.MONGODB_URI

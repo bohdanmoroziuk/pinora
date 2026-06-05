@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     './layers/core',
     './layers/ui',
     './layers/pin',
+    './layers/board',
     './layers/user',
     './layers/auth',
   ],
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@pinia/nuxt',
+    '@vueuse/nuxt',
   ],
 
   devtools: {
