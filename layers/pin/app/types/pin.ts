@@ -1,4 +1,5 @@
 export type GetFeedPinsParams = {
+  search?: string
   boardId?: string
 }
 

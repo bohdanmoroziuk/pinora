@@ -11,6 +11,7 @@ export type PinDocument = HydratedDocument<PinEntity>
 export type PinFilter = QueryFilter<PinEntity>
 
 export type GetPinsParams = {
+  search?: string
   userId?: string
   boardId?: string
 }

@@ -6,10 +6,12 @@ const pinsStore = usePinsStore()
 const { feedPins } = storeToRefs(pinsStore)
 const { loadFeedPins } = pinsStore
 
+const search = useRouteQuery<string | undefined>('search', undefined)
 const boardId = useRouteQuery<string | undefined>('boardId', undefined)
 
 const filter = computed(() => {
   return {
+    search: search.value,
     boardId: boardId.value,
   }
 })

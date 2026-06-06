@@ -16,6 +16,12 @@ export const getPins = (params: GetPinsParams) => {
       .equals(params.boardId)
   }
 
+  if (params.search) {
+    query = query
+      .where('title')
+      .regex(new RegExp(params.search, 'i'))
+  }
+
   return query
     .sort({ createdAt: -1 })
     .exec()
