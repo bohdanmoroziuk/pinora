@@ -1,4 +1,6 @@
-export type GetFeedPinsParams = Record<string, unknown>
+export type GetFeedPinsParams = {
+  boardId?: string
+}
 
 export type GetUserPinsParams = GetFeedPinsParams & {
   userId: string

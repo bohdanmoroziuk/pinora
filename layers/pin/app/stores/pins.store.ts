@@ -1,4 +1,5 @@
 import type { Pin, PinDetails } from '#layers/pin/shared/types/pin'
+import type { GetFeedPinsParams } from '#layers/pin/app/types/pin'
 import { getFeedPins, getUserPins, getPinById } from '#layers/pin/app/repositories/pin.repository'
 
 export const usePinsStore = defineStore('pins', () => {
@@ -6,8 +7,8 @@ export const usePinsStore = defineStore('pins', () => {
   const userPins = ref<Pin[]>([])
   const pin = ref<PinDetails | null>(null)
 
-  const loadFeedPins = async () => {
-    feedPins.value = await getFeedPins({})
+  const loadFeedPins = async (params: GetFeedPinsParams) => {
+    feedPins.value = await getFeedPins(params)
   }
 
   const loadUserPins = async (userId: string) => {

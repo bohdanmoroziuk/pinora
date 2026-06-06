@@ -4,9 +4,11 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
   const userId = query.userId as string | undefined
+  const boardId = query.boardId as string | undefined
 
   const pins = await getPins({
     userId,
+    boardId,
   })
 
   return pins

@@ -12,4 +12,5 @@ export type PinFilter = QueryFilter<PinEntity>
 
 export type GetPinsParams = {
   userId?: string
+  boardId?: string
 }

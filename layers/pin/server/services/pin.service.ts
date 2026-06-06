@@ -10,6 +10,12 @@ export const getPins = (params: GetPinsParams) => {
       .equals(params.userId)
   }
 
+  if (params.boardId) {
+    query = query
+      .where('board')
+      .equals(params.boardId)
+  }
+
   return query
     .sort({ createdAt: -1 })
     .exec()

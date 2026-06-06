@@ -8,7 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <div class="mb-8 cursor-pointer">
+  <ULink
+    as="div"
+    class="mb-8 cursor-pointer"
+    :to="{ path: '/pins', query: { boardId: board.id } }"
+  >
     <PinImage
       class="w-full object-cover rounded-2xl"
       :src="board.coverMedia!"
@@ -23,5 +27,5 @@ defineProps<{
         {{ board.pinsCount }} pins · {{ formatTimeAgo(new Date(board.createdAt)) }}
       </p>
     </div>
-  </div>
+  </ULink>
 </template>
