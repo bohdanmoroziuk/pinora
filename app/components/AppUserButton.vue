@@ -34,11 +34,10 @@ const items = ref<DropdownMenuItem[]>([
         content: 'w-24',
       }"
     >
-      <img
-        class="w-4 h-4 cursor-pointer"
-        src="/icons/arrow.svg"
-        alt=""
-      >
+      <UIcon
+        name="i-lucide-chevron-down"
+        class="size-6 cursor-pointer"
+      />
     </UDropdownMenu>
   </div>
 

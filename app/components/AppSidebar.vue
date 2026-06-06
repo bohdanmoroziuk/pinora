@@ -16,40 +16,40 @@
         class="w-12 h-12 flex justify-center items-center hover:bg-[#f1f1f1]"
         to="/"
       >
-        <img
-          src="/icons/home.svg"
-          alt=""
-        >
+        <UIcon
+          class="size-5"
+          name="i-lucide-home"
+        />
       </ULink>
 
       <ULink
         class="w-12 h-12 flex justify-center items-center hover:bg-[#f1f1f1]"
         to="/"
       >
-        <img
-          src="/icons/create.svg"
-          alt=""
-        >
+        <UIcon
+          class="size-5"
+          name="i-lucide-square-plus"
+        />
       </ULink>
 
       <ULink
         class="w-12 h-12 flex justify-center items-center hover:bg-[#f1f1f1]"
         to="/"
       >
-        <img
-          src="/icons/updates.svg"
-          alt=""
-        >
+        <UIcon
+          class="size-5"
+          name="i-lucide-bell"
+        />
       </ULink>
 
       <ULink
         class="w-12 h-12 flex justify-center items-center hover:bg-[#f1f1f1]"
         to="/"
       >
-        <img
-          src="/icons/messages.svg"
-          alt=""
-        >
+        <UIcon
+          class="size-5"
+          name="i-lucide-message-circle-more"
+        />
       </ULink>
     </nav>
 
@@ -57,10 +57,10 @@
       class="w-12 h-12 flex justify-center items-center hover:bg-[#f1f1f1]"
       to="/"
     >
-      <img
-        src="/icons/settings.svg"
-        alt=""
-      >
+      <UIcon
+        class="size-5"
+        name="i-lucide-settings"
+      />
     </ULink>
   </aside>
 </template>
