@@ -1,0 +1,10 @@
+name: local
+variables:
+  - name: BASE_URL
+    value: http://localhost:3000/api
+  - secret: true
+    name: PIN_ID
+  - secret: true
+    name: USER_ID
+  - secret: true
+    name: BOARD_ID
