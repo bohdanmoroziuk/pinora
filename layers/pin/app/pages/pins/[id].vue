@@ -57,7 +57,7 @@ invariant(pin.value != null, 404, 'Pin not found')
           </span>
         </ULink>
 
-        <PinComments />
+        <PinComments :pin-id="pin.id" />
       </div>
     </div>
   </div>

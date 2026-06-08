@@ -1,7 +1,13 @@
+<script setup lang="ts">
+defineProps<{
+  pinId: string
+}>()
+</script>
+
 <template>
   <div class="flex flex-col flex-1 gap-4 min-h-0">
-    <PinCommentList />
+    <CommentList :pin-id />
 
-    <PinCommentForm />
+    <CommentForm :pin-id />
   </div>
 </template>
