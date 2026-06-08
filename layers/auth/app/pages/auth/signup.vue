@@ -1,16 +1,27 @@
 <script setup lang="ts">
+import type { SignupInput } from '#layers/auth/app/types/auth'
+import { getErrorMessage } from '#layers/core/shared/utils/error'
+import { useAuthStore } from '#layers/auth/app/stores/auth.store'
+
 definePageMeta({
   layout: 'auth',
 })
 
-const state = reactive({
-  name: '',
-  username: '',
-  email: '',
-  password: '',
-})
+const authStore = useAuthStore()
+const { user } = storeToRefs(authStore)
+const { signupUser } = authStore
 
 const error = ref('')
+
+const handleUserSignup = async (input: SignupInput) => {
+  try {
+    await signupUser(input)
+    await navigateTo(`/users/${user.value!.username}`)
+  }
+  catch (e) {
+    error.value = getErrorMessage(e)
+  }
+}
 </script>
 
 <template>
@@ -25,66 +36,9 @@ const error = ref('')
       Create an account
     </h1>
 
-    <UForm class="w-full flex flex-col gap-4">
-      <UFormField
-        label="name"
-        name="name"
-      >
-        <UInput
-          v-model="state.name"
-          class="w-full"
-        />
-      </UFormField>
-
-      <UFormField
-        label="Username"
-        name="username"
-      >
-        <UInput
-          v-model="state.username"
-          class="w-full"
-        />
-      </UFormField>
-
-      <UFormField
-        label="Email"
-        name="email"
-      >
-        <UInput
-          v-model="state.email"
-          class="w-full"
-        />
-      </UFormField>
-
-      <UFormField
-        label="Password"
-        name="password"
-      >
-        <UInput
-          v-model="state.password"
-          type="password"
-          class="w-full"
-        />
-      </UFormField>
-
-      <UButton
-        class="rounded-3xl"
-        type="submit"
-        block
-      >
-        Signup
-      </UButton>
-
-      <p class="text-sm text-center">
-        Already have an account? <ULink to="/auth/login">Login</ULink>
-      </p>
-
-      <p
-        v-if="error"
-        class="text-error text-center"
-      >
-        {{ error }}
-      </p>
-    </UForm>
+    <SignupForm
+      :error
+      @submit="handleUserSignup"
+    />
   </div>
 </template>
