@@ -25,6 +25,7 @@
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "eslint": "^10.3.0",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.6.3",
     "nuxt": "^4.4.5",
     "pinia": "^3.0.4",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.111",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.1",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.2.9"

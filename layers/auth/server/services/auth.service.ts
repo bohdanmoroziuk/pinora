@@ -1,9 +1,10 @@
 import type { SignupInput, LoginInput } from '#layers/auth/server/types/auth'
 import { hashPassword, comparePassword } from '#layers/core/server/services/password.service'
+import { signToken, getTokenSecret } from '#layers/core/server/services/token.service'
 import { createUser, findUserByEmail, findUserByEmailWithPassword } from '#layers/user/server/services/user.service'
 import { mapUser } from '#layers/user/server/mappers/user.mapper'
 
-export const signup = async (input: SignupInput) => {
+export const signupUser = async (input: SignupInput) => {
   const { fullName, username, email, password } = input
 
   const existingUser = await findUserByEmail(email)
@@ -19,17 +20,29 @@ export const signup = async (input: SignupInput) => {
     password: hashedPassword,
   })
 
-  return user
+  const tokenSecret = getTokenSecret()
+  const token = signToken({ userId: user.id }, tokenSecret, { expiresIn: '7d' })
+
+  return {
+    token,
+    user,
+  }
 }
 
-export const login = async (input: LoginInput) => {
+export const loginUser = async (input: LoginInput) => {
   const existingUser = await findUserByEmailWithPassword(input.email)
 
   invariant(existingUser, 401, 'Invalid email or password')
 
-  const isPasswordValid = comparePassword(input.password, existingUser.password)
+  const isPasswordValid = await comparePassword(input.password, existingUser.password)
 
   invariant(isPasswordValid, 401, 'Invalid email or password')
 
-  return mapUser(existingUser)
+  const tokenSecret = getTokenSecret()
+  const token = signToken({ userId: existingUser.id }, tokenSecret, { expiresIn: '7d' })
+
+  return {
+    token,
+    user: mapUser(existingUser),
+  }
 }
