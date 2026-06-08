@@ -1,14 +1,26 @@
 <script setup lang="ts">
+import type { LoginInput } from '#layers/auth/server/types/auth'
+import { useAuthStore } from '#layers/auth/app/stores/auth.store'
+
 definePageMeta({
   layout: 'auth',
 })
 
-const state = reactive({
-  email: '',
-  password: '',
-})
-
 const error = ref('')
+
+const authStore = useAuthStore()
+const { user } = storeToRefs(authStore)
+const { loginUser } = authStore
+
+const handleUserLogin = async (input: LoginInput) => {
+  try {
+    await loginUser(input)
+    await navigateTo(`/users/${user.value!.username}`)
+  }
+  catch (e) {
+    error.value = getErrorMessage(e)
+  }
+}
 </script>
 
 <template>
@@ -23,47 +35,9 @@ const error = ref('')
       Login to your account
     </h1>
 
-    <UForm class="w-full flex flex-col gap-4">
-      <UFormField
-        label="Email"
-        name="email"
-      >
-        <UInput
-          v-model="state.email"
-          type="email"
-          class="w-full"
-        />
-      </UFormField>
-
-      <UFormField
-        label="Password"
-        name="password"
-      >
-        <UInput
-          v-model="state.password"
-          class="w-full"
-          type="password"
-        />
-      </UFormField>
-
-      <UButton
-        class="rounded-3xl"
-        type="submit"
-        block
-      >
-        Login
-      </UButton>
-
-      <p class="text-sm text-center">
-        Don't have an account? <ULink to="/auth/signup">Sign up</ULink>
-      </p>
-
-      <p
-        v-if="error"
-        class="text-error text-center"
-      >
-        {{ error }}
-      </p>
-    </UForm>
+    <LoginForm
+      :error
+      @submit="handleUserLogin"
+    />
   </div>
 </template>

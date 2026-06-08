@@ -13,6 +13,15 @@ export const findUserByEmail = (email: string) => {
     .exec()
 }
 
+export const findUserByEmailWithPassword = (email: string) => {
+  return UserModel
+    .findOne()
+    .where('email')
+    .equals(email)
+    .select('+password')
+    .exec()
+}
+
 export const findUserByUsername = (username: string) => {
   return UserModel
     .findOne()
