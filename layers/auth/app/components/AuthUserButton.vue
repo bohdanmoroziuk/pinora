@@ -1,7 +1,27 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
+import { useAuthStore } from '#layers/auth/app/stores/auth.store'
 
-const isLoggedIn = ref(true)
+const toast = useToast()
+
+const authStore = useAuthStore()
+const { isLoggedIn } = storeToRefs(authStore)
+const { logoutUser } = authStore
+
+const handleUserLogout = async () => {
+  try {
+    await logoutUser()
+    await navigateTo('/auth/login')
+  }
+  catch (error) {
+    toast.add({
+      title: 'Uh oh! Something went wrong.',
+      description: getErrorMessage(error),
+      color: 'error',
+      progress: false,
+    })
+  }
+}
 
 const items = ref<DropdownMenuItem[]>([
   {
@@ -12,6 +32,7 @@ const items = ref<DropdownMenuItem[]>([
   },
   {
     label: 'Logout',
+    onSelect: handleUserLogout,
   },
 ])
 </script>
@@ -44,7 +65,7 @@ const items = ref<DropdownMenuItem[]>([
   <ULink
     v-else
     class="leading-none text-nowrap text-muted px-4 py-2 rounded-4xl hover:bg-[#f1f1f1]"
-    to="/"
+    to="/auth/login"
   >
     Login / Sign up
   </ULink>

@@ -28,6 +28,6 @@ const changeSearchQuery = (search: string) => {
   <header class="flex items-center gap-4 py-4">
     <AppSearchForm @submit="changeSearchQuery" />
 
-    <AppUserButton />
+    <AuthUserButton />
   </header>
 </template>

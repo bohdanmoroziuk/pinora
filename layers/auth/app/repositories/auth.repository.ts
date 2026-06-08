@@ -14,3 +14,9 @@ export const login = (input: LoginInput) => {
     body: input,
   })
 }
+
+export const logout = () => {
+  return $fetch('/api/auth/logout', {
+    method: 'POST',
+  })
+}
