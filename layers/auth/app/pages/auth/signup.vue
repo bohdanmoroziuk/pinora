@@ -8,7 +8,7 @@ definePageMeta({
 })
 
 const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
+const { authUser } = storeToRefs(authStore)
 const { signupUser } = authStore
 
 const error = ref('')
@@ -16,7 +16,7 @@ const error = ref('')
 const handleUserSignup = async (input: SignupInput) => {
   try {
     await signupUser(input)
-    await navigateTo(`/users/${user.value!.username}`)
+    await navigateTo(`/users/${authUser.value!.username}`)
   }
   catch (e) {
     error.value = getErrorMessage(e)

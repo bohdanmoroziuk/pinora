@@ -10,6 +10,10 @@ export const setAuthCookie = (event: H3Event, token: string) => {
   })
 }
 
+export const getAuthCookie = (event: H3Event) => {
+  return getCookie(event, 'token')
+}
+
 export const deleteAuthCookie = (event: H3Event) => {
   deleteCookie(event, 'token', {
     path: '/',

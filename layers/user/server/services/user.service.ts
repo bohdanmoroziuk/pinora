@@ -29,3 +29,11 @@ export const findUserByUsername = (username: string) => {
     .equals(username)
     .exec()
 }
+
+export const findUserById = (id: string) => {
+  return UserModel
+    .findOne()
+    .where('_id')
+    .equals(id)
+    .exec()
+}

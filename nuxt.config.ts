@@ -32,7 +32,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     mongodbUri: process.env.MONGODB_URI || '',
-    tokenSecret: process.env.TOKEN_SECRET || '',
+    authTokenSecret: process.env.AUTH_TOKEN_SECRET || '',
     public: {
       imagekitUrlEndpoint: '',
     },

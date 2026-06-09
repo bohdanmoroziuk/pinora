@@ -3,27 +3,27 @@ import jwt from 'jsonwebtoken'
 import type {
   Secret as TokenSecret,
   SignOptions as TokenSignOptions,
+  VerifyOptions as TokenVerifyOptions,
 } from 'jsonwebtoken'
 
 export type {
   TokenSecret,
   TokenSignOptions,
+  TokenVerifyOptions,
 }
 
-export type TokenPayload = string | object | Buffer<ArrayBufferLike>
-
-export const signToken = (
-  payload: TokenPayload,
+export const signToken = <TTokenPayload extends object>(
+  payload: TTokenPayload,
   secret: TokenSecret,
   options?: TokenSignOptions,
 ) => {
   return jwt.sign(payload, secret, options)
 }
 
-export const getTokenSecret = () => {
-  const config = useRuntimeConfig()
-
-  invariant(config.tokenSecret, 500, 'Token secret is not configured')
-
-  return config.tokenSecret
+export const verifyToken = <TTokenPayload extends object>(
+  token: string,
+  secret: TokenSecret,
+  options?: TokenVerifyOptions,
+) => {
+  return jwt.verify(token, secret, options) as TTokenPayload
 }
