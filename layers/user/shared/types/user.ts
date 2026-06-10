@@ -7,3 +7,12 @@ export type User = {
   createdAt: string
   updatedAt: string
 }
+
+export type UserFollowStatus = {
+  isFollowing: boolean
+}
+
+export type UserProfile = User & UserFollowStatus & {
+  followersCount: number
+  followingCount: number
+}
