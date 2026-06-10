@@ -1,3 +1,3 @@
-export type GetCommentsParams = {
-  pinId: string
+export type CreateCommentInput = {
+  description: string
 }
