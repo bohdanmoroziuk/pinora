@@ -5,11 +5,7 @@
         class="w-12 h-12 flex justify-center items-center hover:bg-[#f1f1f1]"
         to="/"
       >
-        <img
-          class="w-6 h-6"
-          src="/icons/logo.png"
-          alt="Logo"
-        >
+        <AppLogo class="size-6" />
       </ULink>
 
       <ULink
