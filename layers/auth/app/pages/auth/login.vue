@@ -9,13 +9,13 @@ definePageMeta({
 const error = ref('')
 
 const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
+const { authUser } = storeToRefs(authStore)
 const { loginUser } = authStore
 
 const handleUserLogin = async (input: LoginInput) => {
   try {
     await loginUser(input)
-    await navigateTo(`/users/${user.value!.username}`)
+    await navigateTo(`/users/${authUser.value!.username}`)
   }
   catch (e) {
     error.value = getErrorMessage(e)
@@ -25,11 +25,7 @@ const handleUserLogin = async (input: LoginInput) => {
 
 <template>
   <div class="flex flex-col items-center justify-center gap-8 p-8 rounded-3xl shadow-sm">
-    <img
-      class="size-9"
-      src="/icons/logo.png"
-      alt="Logo"
-    >
+    <AppLogo class="size-9" />
 
     <h1 class="font-normal">
       Login to your account

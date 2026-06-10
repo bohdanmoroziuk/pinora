@@ -1,14 +1,35 @@
-import { getUserByUsername } from '#layers/user/app/repositories/user.repository'
+import type { UserProfile } from '#layers/user/shared/types/user'
+import { userRepository } from '#layers/user/app/repositories/user.repository'
 
 export const useUsersStore = defineStore('users', () => {
-  const user = ref<User | null>(null)
+  const userProfile = ref<UserProfile | null>(null)
 
-  const loadUserByUsername = async (username: string) => {
-    user.value = await getUserByUsername(username)
+  const loadUserProfileByUsername = async (username: string) => {
+    userProfile.value = await userRepository.getUserProfileByUsername(username)
+  }
+
+  const toggleUserFollow = async (username: string) => {
+    const result = await userRepository.toggleUserFollow(username)
+
+    if (!userProfile.value) {
+      return result
+    }
+
+    userProfile.value.isFollowing = result.isFollowing
+
+    if (result.isFollowing) {
+      userProfile.value.followersCount += 1
+    }
+    else {
+      userProfile.value.followersCount -= 1
+    }
+
+    return result
   }
 
   return {
-    user,
-    loadUserByUsername,
+    userProfile,
+    loadUserProfileByUsername,
+    toggleUserFollow,
   }
 })

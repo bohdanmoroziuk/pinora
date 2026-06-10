@@ -8,3 +8,5 @@ variables:
     name: USER_ID
   - secret: true
     name: BOARD_ID
+  - name: USERNAME
+    value: wildjordan

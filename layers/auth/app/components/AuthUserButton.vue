@@ -5,8 +5,12 @@ import { useAuthStore } from '#layers/auth/app/stores/auth.store'
 const toast = useToast()
 
 const authStore = useAuthStore()
-const { isLoggedIn } = storeToRefs(authStore)
+const { authUser, isAuthenticated } = storeToRefs(authStore)
 const { logoutUser } = authStore
+
+const goToProfilePage = () => {
+  return navigateTo(`/users/${authUser.value!.username}`)
+}
 
 const handleUserLogout = async () => {
   try {
@@ -26,6 +30,7 @@ const handleUserLogout = async () => {
 const items = ref<DropdownMenuItem[]>([
   {
     label: 'Profile',
+    onSelect: goToProfilePage,
   },
   {
     label: 'Settings',
@@ -39,10 +44,14 @@ const items = ref<DropdownMenuItem[]>([
 
 <template>
   <div
-    v-if="isLoggedIn"
+    v-if="isAuthenticated"
     class="hidden sm:flex items-center gap-4"
   >
-    <UserAvatar class="w-9 h-9" />
+    <UserAvatar
+      :src="authUser!.avatar"
+      :alt="authUser!.fullName"
+      class="w-9 h-9"
+    />
 
     <UDropdownMenu
       :items="items"
