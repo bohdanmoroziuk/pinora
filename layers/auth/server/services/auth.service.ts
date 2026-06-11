@@ -25,7 +25,7 @@ export const signupUser = async (input: SignupInput) => {
 
   return {
     token,
-    user,
+    user: mapUser(user),
   }
 }
 

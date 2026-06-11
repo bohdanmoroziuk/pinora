@@ -7,5 +7,5 @@ export type CreateUserInput = {
 
 export type GetUserProfileByUsernameInput = {
   username: string
-  authUserId: string | null
+  authUserId: Nullable<string>
 }

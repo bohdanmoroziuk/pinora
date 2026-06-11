@@ -2,7 +2,7 @@ import { toggleUserFollowParamsSchema } from '#layers/user/server/schemas/follow
 import { toggleUserFollow } from '#layers/user/server/services/follow.service'
 
 export default defineEventHandler(async (event) => {
-  const params = validate(toggleUserFollowParamsSchema, { username: getRouterParam(event, 'username') })
+  const params = await getValidatedRouterParams(event, toggleUserFollowParamsSchema.parse)
   const followerId = requireAuthUserId(event)
 
   return toggleUserFollow({

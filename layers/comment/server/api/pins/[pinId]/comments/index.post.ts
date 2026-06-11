@@ -4,8 +4,8 @@ import { createComment } from '#layers/comment/server/services/comment.service'
 
 export default defineEventHandler(async (event) => {
   const userId = requireAuthUserId(event)
-  const params = validate(createCommentParamsSchema, { pinId: getRouterParam(event, 'pinId') })
-  const body = validate(createCommentBodySchema, await readBody(event))
+  const params = await getValidatedRouterParams(event, createCommentParamsSchema.parse)
+  const body = await readValidatedBody(event, createCommentBodySchema.parse)
   const comment = await createComment({
     pin: params.pinId,
     user: userId,

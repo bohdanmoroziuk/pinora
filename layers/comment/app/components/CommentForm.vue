@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const toast = useToast()
-const { createComment } = useCommentsStore()
+const { createComment, loadComments } = useCommentsStore()
 
 const state = reactive({
   description: '',
@@ -24,6 +24,7 @@ const addEmoji = (emoji: Emoji) => {
 const handleCommentCreate = async () => {
   try {
     await createComment(props.pinId, toValue(state))
+    await loadComments(props.pinId)
     resetState()
   }
   catch (error) {

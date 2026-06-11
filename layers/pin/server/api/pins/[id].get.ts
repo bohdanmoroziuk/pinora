@@ -1,11 +1,9 @@
 import { getPinDetailsById } from '#layers/pin/server/services/pin.service'
+import { getPinDetailsByIdParamsSchema } from '#layers/pin/server/schemas/pin.schema'
 
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id')
-
-  invariant(id != undefined, 400, 'Id not provided')
-
-  const pin = await getPinDetailsById(id)
+  const params = await getValidatedRouterParams(event, getPinDetailsByIdParamsSchema.parse)
+  const pin = await getPinDetailsById(params.id)
 
   invariant(pin != null, 404, 'Pin not found')
 

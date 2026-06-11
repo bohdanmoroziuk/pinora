@@ -5,8 +5,8 @@ export type Pin = {
   height: number
   title: string
   description: string
-  link: string | null
-  board: string | null
+  link: Nullable<string>
+  board: Nullable<string>
   tags: string[]
   user: string
   createdAt: string

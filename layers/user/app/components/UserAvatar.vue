@@ -4,7 +4,7 @@ const {
   alt = 'User avatar',
   fallback = '/icons/no-avatar.png',
 } = defineProps<{
-  src?: string | null
+  src?: Nullable<string>
   alt?: string
   fallback?: string
 }>()

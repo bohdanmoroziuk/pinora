@@ -2,7 +2,7 @@ import type { UserProfile } from '#layers/user/shared/types/user'
 import { userRepository } from '#layers/user/app/repositories/user.repository'
 
 export const useUsersStore = defineStore('users', () => {
-  const userProfile = ref<UserProfile | null>(null)
+  const userProfile = ref<Nullable<UserProfile>>(null)
 
   const loadUserProfileByUsername = async (username: string) => {
     userProfile.value = await userRepository.getUserProfileByUsername(username)

@@ -2,8 +2,8 @@
 export const mapFollow = (document: any) => {
   return {
     id: document._id.toString(),
-    followerId: document.followerId.toString(),
-    followingId: document.followingId.toString(),
+    follower: document.follower.toString(),
+    following: document.following.toString(),
     createdAt: document.createdAt.toISOString(),
     updatedAt: document.updatedAt.toISOString(),
   }

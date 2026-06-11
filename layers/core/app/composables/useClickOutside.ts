@@ -4,12 +4,12 @@ import { onMounted, onUnmounted } from 'vue'
 type EventType = 'click' | 'touchend'
 
 export const useClickOutside = <T extends HTMLElement>(
-  element: Ref<T | null>,
+  element: Ref<Nullable<T>>,
   callback: (event: MouseEvent | TouchEvent) => void,
   events: EventType[] = ['click', 'touchend'],
 ) => {
   const listener = (event: MouseEvent | TouchEvent) => {
-    const target = event.target as Node | null
+    const target = event.target as Nullable<Node>
 
     if (!element.value) return
     if (!target) return

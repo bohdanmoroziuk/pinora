@@ -10,9 +10,7 @@ export const useCommentsStore = defineStore('comments', () => {
   }
 
   const createComment = async (pinId: string, data: CreateCommentInput) => {
-    const comment = await commentRepository.createComment(pinId, data)
-
-    comments.value.unshift(comment)
+    await commentRepository.createComment(pinId, data)
   }
 
   return {

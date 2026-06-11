@@ -1,11 +1,9 @@
 import { getComments } from '#layers/comment/server/services/comment.service'
+import { getCommentsParamsSchema } from '#layers/comment/server/schemas/comment.schema'
 
 export default defineEventHandler(async (event) => {
-  const pinId = getRouterParam(event, 'pinId')
-
-  invariant(pinId, 400, 'Pin id not provided')
-
-  const comments = await getComments({ pinId })
+  const params = await getValidatedRouterParams(event, getCommentsParamsSchema.parse)
+  const comments = await getComments(params)
 
   return comments
 })
