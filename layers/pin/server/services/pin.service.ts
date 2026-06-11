@@ -1,25 +1,25 @@
-import type { GetPinsParams } from '#layers/pin/server/types/pin'
+import type { GetPinsInput } from '#layers/pin/server/types/pin'
 import { PinModel } from '#layers/pin/server/models/pin.model'
 
-export const getPins = (params: GetPinsParams) => {
+export const getPins = (input: GetPinsInput) => {
   let query = PinModel.find()
 
-  if (params.userId) {
+  if (input.userId) {
     query = query
       .where('user')
-      .equals(params.userId)
+      .equals(input.userId)
   }
 
-  if (params.boardId) {
+  if (input.boardId) {
     query = query
       .where('board')
-      .equals(params.boardId)
+      .equals(input.boardId)
   }
 
-  if (params.search) {
+  if (input.search) {
     query = query
       .where('title')
-      .regex(new RegExp(params.search, 'i'))
+      .regex(new RegExp(input.search, 'i'))
   }
 
   return query

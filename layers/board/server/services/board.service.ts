@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
-import type { GetBoardsParams } from '#layers/board/server/types/board'
+import type { GetBoardsInput } from '#layers/board/server/types/board'
 import { BoardModel } from '#layers/board/server/models/board.model'
 
 const { Types } = mongoose
 
-export const getBoards = (params: GetBoardsParams) => {
+export const getBoards = (input: GetBoardsInput) => {
   return BoardModel.aggregate([
     {
       $match: {
-        user: new Types.ObjectId(params.userId),
+        user: new Types.ObjectId(input.userId),
       },
     },
     {
