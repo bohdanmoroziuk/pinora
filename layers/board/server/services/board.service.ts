@@ -1,35 +1,9 @@
-import mongoose from 'mongoose'
 import type { GetBoardsInput } from '#layers/board/server/types/board'
-import { BoardModel } from '#layers/board/server/models/board.model'
+import { boardRepository } from '#layers/board/server/repositories/board.repository'
+import { mapBoard } from '#layers/board/server/mappers/board.mapper'
 
-const { Types } = mongoose
+export const getBoards = async (input: GetBoardsInput) => {
+  const boards = await boardRepository.getMany(input)
 
-export const getBoards = (input: GetBoardsInput) => {
-  return BoardModel.aggregate([
-    {
-      $match: {
-        user: new Types.ObjectId(input.userId),
-      },
-    },
-    {
-      $lookup: {
-        from: 'pins',
-        localField: '_id',
-        foreignField: 'board',
-        as: 'pins',
-      },
-    },
-    {
-      $project: {
-        id: { $toString: '$_id' },
-        title: 1,
-        user: { $toString: '$user' },
-        pinsCount: { $size: '$pins' },
-        coverMedia: { $arrayElemAt: ['$pins.media', 0] },
-        createdAt: 1,
-        updatedAt: 1,
-        _id: 0,
-      },
-    },
-  ])
+  return boards.map(mapBoard)
 }
