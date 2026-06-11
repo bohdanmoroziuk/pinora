@@ -5,7 +5,7 @@ import { getFeedPins, getUserPins, getPinById } from '#layers/pin/app/repositori
 export const usePinsStore = defineStore('pins', () => {
   const feedPins = ref<Pin[]>([])
   const userPins = ref<Pin[]>([])
-  const pin = ref<PinDetails | null>(null)
+  const pin = ref<Nullable<PinDetails>>(null)
 
   const loadFeedPins = async (params: GetFeedPinsParams) => {
     feedPins.value = await getFeedPins(params)

@@ -3,7 +3,7 @@ export type Board = {
   title: string
   user: string
   pinsCount: number
-  coverMedia: string | null
+  coverMedia: Nullable<string>
   createdAt: string
   updatedAt: string
 }

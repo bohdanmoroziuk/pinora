@@ -5,7 +5,7 @@ import type { getPinDetailsByIdParamsSchema, getPinsQuerySchema } from '#layers/
 
 export type PinEntity = Omit<Pin, 'id' | 'user' | 'board'> & {
   user: Types.ObjectId
-  board: Types.ObjectId | null
+  board: Nullable<Types.ObjectId>
 }
 
 export type PinDocument = HydratedDocument<PinEntity>

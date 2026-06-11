@@ -3,7 +3,7 @@ export type User = {
   fullName: string
   username: string
   email: string
-  avatar: string | null
+  avatar: Nullable<string>
   createdAt: string
   updatedAt: string
 }

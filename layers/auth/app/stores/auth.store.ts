@@ -3,7 +3,7 @@ import type { SignupInput, LoginInput } from '#layers/auth/app/types/auth'
 import { signup, login, logout, getMe } from '#layers/auth/app/repositories/auth.repository'
 
 export const useAuthStore = defineStore('auth', () => {
-  const authUser = ref<AuthUser | null>(null)
+  const authUser = ref<Nullable<AuthUser>>(null)
   const isAuthReady = ref(false)
 
   const isAuthenticated = computed(() => !!authUser.value)
