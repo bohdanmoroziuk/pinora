@@ -1,6 +1,6 @@
 import { getUserProfileByUsername } from '#layers/user/server/services/user.service'
 import { getAuthUserId } from '#layers/auth/server/utils/auth-user'
-import { getUserProfileByUsernameParamsSchema } from '#layers/user/server/schemas/follow.schema'
+import { getUserProfileByUsernameParamsSchema } from '#layers/user/server/schemas/user.schema'
 
 export default defineEventHandler(async (event) => {
   const params = await getValidatedRouterParams(event, getUserProfileByUsernameParamsSchema.parse)

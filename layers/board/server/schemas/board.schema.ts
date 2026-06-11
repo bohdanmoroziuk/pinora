@@ -1,5 +1,6 @@
 import { z } from 'zod'
+import { mongoIdSchema } from '#layers/core/server/schemas/common.schema'
 
 export const getBoardsQuerySchema = z.object({
-  userId: z.string().min(1),
+  userId: mongoIdSchema,
 })

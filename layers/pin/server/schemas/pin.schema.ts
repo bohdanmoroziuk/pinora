@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { mongoIdSchema } from '#layers/core/server/schemas/common.schema'
 
 export const getPinsQuerySchema = z.object({
   search: z.string().optional(),
@@ -7,5 +8,5 @@ export const getPinsQuerySchema = z.object({
 })
 
 export const getPinDetailsByIdParamsSchema = z.object({
-  id: z.string().min(1),
+  id: mongoIdSchema,
 })
